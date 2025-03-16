@@ -10,13 +10,23 @@ public class Operacoes {
         this.secondNum = secondNum;
     }
 
+    public void exibirValor(int primeiro) {
+        System.out.println("Valor do primeiro: " + primeiro);
+    }
 
-    @Override
-    public String toString() {
-        return "Valor do primeiro: " + firstNum +
-               "\nValor do primeiro: " + firstNum + ", Valor do segundo: " + secondNum +
-               "\nValor do segundo: " + secondNum +
-               "\nValor do primeiro vezes três: " + firstNum * 3 +
-               "\nValor do segundo vezes dois: " + firstNum * 2;
+    public void exibirValor(int primeiro, double segundo) {
+        System.out.println("Valor do primeiro: " + primeiro + ", Valor do segundo: " + String.format("%.2f", segundo));
+    }
+
+    public void exibirValor(double segundo) {
+        System.out.println("Valor do segundo: " + String.format("%.2f", segundo));
+    }
+
+    public void exibirValorMultiplicado(int primeiro, int fator) {
+        System.out.println("Valor do primeiro vezes " + fator + ": " + (primeiro * fator));
+    }
+
+    public void exibirValorMultiplicado(double segundo, int fator) {
+        System.out.println("Valor do segundo vezes " + fator + ": " + String.format("%.2f", segundo * fator));
     }
 }

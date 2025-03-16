@@ -31,7 +31,7 @@ public class Questao3 {
                     cadastrarTelefone();
                     break;
                 case 2:
-                    cadastrarTelefoneSemFio();
+                    cadastrarTelefone(true);
                     break;
                 case 3:
                     listarProdutos();
@@ -48,51 +48,29 @@ public class Questao3 {
     }
 
     private static void cadastrarTelefone() {
-        System.out.println("\n=== CADASTRAR TELEFONE COM FIO ===");
-        System.out.print("Código: ");
-        int codigo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Número de Série: ");
-        String numeroSerie = scanner.nextLine();
-        System.out.print("Modelo: ");
-        String modelo = scanner.nextLine();
-        System.out.print("Peso (kg): ");
-        double peso = scanner.nextDouble();
-        scanner.nextLine();
-        System.out.print("Dimensão: ");
-        String dimensao = scanner.nextLine();
-
-        Telefone telefone = new Telefone(codigo, numeroSerie, modelo, peso, dimensao);
-        produtos.add(telefone);
-        System.out.println("Telefone com fio cadastrado com sucesso!");
+        cadastrarTelefone(false);
     }
 
-    private static void cadastrarTelefoneSemFio() {
-        System.out.println("\n=== CADASTRAR TELEFONE SEM FIO ===");
-        System.out.print("Código: ");
-        int codigo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Número de Série: ");
-        String numeroSerie = scanner.nextLine();
-        System.out.print("Modelo: ");
-        String modelo = scanner.nextLine();
-        System.out.print("Peso (kg): ");
-        double peso = scanner.nextDouble();
-        scanner.nextLine();
-        System.out.print("Dimensão: ");
-        String dimensao = scanner.nextLine();
+    private static void cadastrarTelefone(boolean isSemFio) {
+        System.out.println("\n=== CADASTRAR " + (isSemFio ? "TELEFONE SEM FIO" : "TELEFONE COM FIO") + " ===");
 
-        System.out.print("Frequência (MHz): ");
-        double frequencia = scanner.nextDouble();
-        System.out.print("Quantidade de Canais: ");
-        int canais = scanner.nextInt();
-        System.out.print("Distância de Operação (m): ");
-        double distanciaOperacao = scanner.nextDouble();
-        scanner.nextLine(); // Consumir quebra de linha
+        int codigo = lerInteiro("Código: ");
+        String numeroSerie = lerTexto("Número de Série: ");
+        String modelo = lerTexto("Modelo: ");
+        double peso = lerDouble("Peso (kg): ");
+        String dimensao = lerTexto("Dimensão: ");
 
-        TelefoneSemFio telefoneSemFio = new TelefoneSemFio(codigo, numeroSerie, modelo, peso, dimensao, frequencia, canais, distanciaOperacao);
-        produtos.add(telefoneSemFio);
-        System.out.println("Telefone sem fio cadastrado com sucesso!");
+        if (isSemFio) {
+            double frequencia = lerDouble("Frequência (MHz): ");
+            int canais = lerInteiro("Quantidade de Canais: ");
+            double distanciaOperacao = lerDouble("Distância de Operação (m): ");
+
+            produtos.add(new TelefoneSemFio(codigo, numeroSerie, modelo, peso, dimensao, frequencia, canais, distanciaOperacao));
+        } else {
+            produtos.add(new Telefone(codigo, numeroSerie, modelo, peso, dimensao));
+        }
+
+        System.out.println((isSemFio ? "Telefone sem fio" : "Telefone com fio") + " cadastrado com sucesso!");
     }
 
     private static void listarProdutos() {
@@ -105,5 +83,24 @@ public class Questao3 {
                 System.out.println();
             }
         }
+    }
+
+    private static int lerInteiro(String mensagem) {
+        System.out.print(mensagem);
+        int valor = scanner.nextInt();
+        scanner.nextLine();
+        return valor;
+    }
+
+    private static double lerDouble(String mensagem) {
+        System.out.print(mensagem);
+        double valor = scanner.nextDouble();
+        scanner.nextLine();
+        return valor;
+    }
+
+    private static String lerTexto(String mensagem) {
+        System.out.print(mensagem);
+        return scanner.nextLine();
     }
 }

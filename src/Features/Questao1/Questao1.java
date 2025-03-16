@@ -11,7 +11,13 @@ public class Questao1 {
         int primeiroNumero = pedirNumero("Informe um valor inteiro", Integer.class);
         double segundoNumero = pedirNumero("Informe um valor real", Double.class);
 
-        System.out.println(new Operacoes(primeiroNumero, segundoNumero));
+        final Operacoes operacoes = new Operacoes(primeiroNumero, segundoNumero);
+
+        operacoes.exibirValor(primeiroNumero);
+        operacoes.exibirValor(primeiroNumero, segundoNumero);
+        operacoes.exibirValor(segundoNumero);
+        operacoes.exibirValorMultiplicado(primeiroNumero, 3);
+        operacoes.exibirValorMultiplicado(segundoNumero, 2);
 
         scanner.close();
     }
