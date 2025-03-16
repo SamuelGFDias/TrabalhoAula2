@@ -1,6 +1,6 @@
 package Features.Questao3.Models;
 
-public class Produto {
+public abstract class Produto {
     protected int codigo;
     protected String numeroSerie;
     protected String modelo;
