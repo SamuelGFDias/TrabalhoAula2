@@ -19,6 +19,7 @@ public class Questao3 {
 
         for (Produto p : produtos) {
             p.exibirDetalhes();
+            System.out.println();
         }
     }
 }

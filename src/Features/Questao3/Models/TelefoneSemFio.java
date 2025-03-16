@@ -1,6 +1,6 @@
 package Features.Questao3.Models;
 
-public class TelefoneSemFio extends Produto {
+public class TelefoneSemFio extends Telefone {
     private final double frequencia;
     private final int canais;
     private final double distanciaOperacao;
@@ -14,8 +14,12 @@ public class TelefoneSemFio extends Produto {
     }
 
     @Override
+    public void exibirTitulo() {
+        System.out.println("Telefone Sem Fio");
+    }
+
+    @Override
     public void exibirDetalhes() {
-        System.out.println("\n=== TELEFONE SEM FIO ===");
         super.exibirDetalhes();
         System.out.println("Frequência: " + frequencia + " MHz");
         System.out.println("Canais: " + canais);

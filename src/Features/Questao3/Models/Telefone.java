@@ -6,8 +6,12 @@ public class Telefone extends Produto {
     }
 
     @Override
+    public void exibirTitulo() {
+        System.out.println("Telefone Com Fio");
+    }
+
+    @Override
     public void exibirDetalhes() {
-        System.out.println("\n=== TELEFONE COM FIO ===");
         super.exibirDetalhes();
     }
 }

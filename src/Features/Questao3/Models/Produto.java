@@ -15,7 +15,12 @@ public class Produto {
         this.dimensao = dimensao;
     }
 
+    public void exibirTitulo() {
+        System.out.println("Produto");
+    }
+
     public void exibirDetalhes() {
+        exibirTitulo();
         System.out.println("Código: " + codigo);
         System.out.println("Número de Série: " + numeroSerie);
         System.out.println("Modelo: " + modelo);
